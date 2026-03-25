@@ -146,6 +146,196 @@
   .rec-revenue { font-family:'DM Mono',monospace; font-size:11px; color:var(--gold); letter-spacing:.1em; margin-bottom:10px; }
   .rec-body { font-size:13px; color:rgba(232,227,216,.5); line-height:1.6; }
   .rec-body strong { color:var(--lt); font-weight:400; }
+
+/* ===================================================
+   RESPONSIVE — SHARED ACROSS ALL THREE PAGES
+   =================================================== */
+
+/* Hide custom cursor on touch devices */
+@media (hover:none),(pointer:coarse) {
+  #cur, #curR { display:none !important; }
+  body { cursor:auto !important; }
+  a, button, [class*="link"] { cursor:pointer !important; }
+}
+
+/* ── NAV ─────────────────────────────────────────── */
+@media (max-width:900px) {
+  nav { padding:16px 24px; }
+  .nav-links { gap:18px; }
+  .nav-links a { font-size:9px; }
+}
+@media (max-width:600px) {
+  nav { padding:14px 16px; }
+  .nav-links { gap:12px; }
+  .nav-links a { font-size:8px; letter-spacing:.08em; }
+}
+@media (max-width:440px) {
+  .nav-links { display:none; }
+}
+
+/* ── HERO (split 2-col → stacked) ────────────────── */
+@media (max-width:900px) {
+  .cs-hero, .hero {
+    grid-template-columns:1fr !important;
+    min-height:auto !important;
+  }
+  .hero-text { padding:100px 32px 48px !important; }
+  .hero-visual {
+    height:300px !important;
+    min-height:0 !important;
+  }
+  .hero-img-wrap { width:260px !important; height:260px !important; }
+}
+@media (max-width:600px) {
+  .hero-text { padding:88px 20px 36px !important; }
+  .hero-visual { height:240px !important; }
+  .hero-meta { gap:16px !important; }
+  .hero-img-wrap { width:200px !important; height:200px !important; }
+}
+
+/* ── SECTIONS ────────────────────────────────────── */
+@media (max-width:900px) {
+  .section { padding:60px 32px !important; }
+}
+@media (max-width:600px) {
+  .section { padding:48px 20px !important; }
+}
+
+/* ── STAT STRIP (4→2→1) ──────────────────────────── */
+@media (max-width:900px) {
+  .stat-strip { grid-template-columns:repeat(2,1fr) !important; }
+  .stat-cell:nth-child(2) { border-right:none !important; }
+  .stat-cell:nth-child(3) { border-top:1px solid rgba(200,154,66,.1); }
+}
+@media (max-width:500px) {
+  .stat-strip { grid-template-columns:1fr 1fr !important; }
+  .stat-cell { padding:20px 18px !important; }
+}
+
+/* ── INSIGHT GRID (3→1) ──────────────────────────── */
+@media (max-width:900px) {
+  .insight-grid { grid-template-columns:1fr 1fr !important; }
+}
+@media (max-width:600px) {
+  .insight-grid { grid-template-columns:1fr !important; }
+}
+
+/* ── FINDING GRID (2→1) ──────────────────────────── */
+@media (max-width:700px) {
+  .finding-grid { grid-template-columns:1fr !important; }
+}
+
+/* ── PROCESS STEPS (4→2→1) ──────────────────────── */
+@media (max-width:900px) {
+  .process-steps { grid-template-columns:1fr 1fr !important; }
+}
+@media (max-width:500px) {
+  .process-steps { grid-template-columns:1fr !important; }
+}
+
+/* ── TWO-COL LAYOUT (2→1) ────────────────────────── */
+@media (max-width:800px) {
+  .two-col { grid-template-columns:1fr !important; gap:24px !important; }
+}
+
+/* ── FOOTER ──────────────────────────────────────── */
+@media (max-width:600px) {
+  .case-footer {
+    flex-direction:column !important;
+    gap:16px !important;
+    padding:28px 20px !important;
+    align-items:flex-start !important;
+  }
+}
+
+/* ── REGRESSION TABLE (scroll) ───────────────────── */
+.regression-table-wrap {
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+@media (max-width:700px) {
+  .regression-table th,
+  .regression-table td { padding:10px 10px !important; font-size:12px !important; }
+}
+
+/* ── NFC CASSETTE — VIEWS GRID (4→2) ─────────────── */
+@media (max-width:800px) {
+  .views-grid { grid-template-columns:repeat(2,1fr) !important; }
+}
+@media (max-width:440px) {
+  .views-grid { grid-template-columns:1fr 1fr !important; }
+}
+
+/* ── REC GRID (2→1) ─────────────────────────────── */
+@media (max-width:700px) {
+  .rec-grid { grid-template-columns:1fr !important; }
+}
+
+/* ── QUOTE CARDS grid (3→1) ─────────────────────── */
+@media (max-width:900px) {
+  [style*="grid-template-columns:1fr 1fr 1fr"] {
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* ── RESEARCH CARDS inline grid (2→1) ───────────── */
+@media (max-width:700px) {
+  [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* ── OUTCOMES GRID (3→1) ────────────────────────── */
+@media (max-width:900px) {
+  [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* ── HERO EYE — smaller on mobile ───────────────── */
+@media (max-width:600px) {
+  .hero-eye { font-size:8px !important; gap:10px !important; }
+  .role-badge { font-size:8px !important; }
+  .pull-quote { font-size:17px !important; padding-left:18px !important; }
+}
+
+/* ── MITA MOCK / SPUN MOCK — scale down ─────────── */
+@media (max-width:900px) {
+  .mita-mock, .spun-mock { width:82% !important; max-width:340px !important; }
+}
+
+/* ── NFC hero visual — full width on mobile ─────── */
+@media (max-width:900px) {
+  .hero-visual { overflow:visible !important; }
+}
+
+/* ── INLINE GRID CLASSES ─────────────────────────── */
+@media (max-width:900px) {
+  .inline-grid-3col { grid-template-columns:1fr !important; }
+  .inline-grid-2col { grid-template-columns:1fr !important; }
+}
+@media (max-width:700px) {
+  .inline-grid-2col { grid-template-columns:1fr !important; }
+}
+
+/* ── NAV HAMBURGER ───────────────────────────────── */
+.nav-toggle { display:none; background:none; border:1px solid rgba(200,154,66,.4); color:var(--gold); font-family:"DM Mono",monospace; font-size:9px; letter-spacing:.12em; padding:5px 10px; cursor:pointer; text-transform:uppercase; }
+@media (max-width:440px) {
+  .nav-toggle { display:block; }
+  .nav-links { 
+    display:none; position:fixed; top:0; left:0; right:0; bottom:0;
+    background:rgba(22,22,26,.97); flex-direction:column; align-items:center; 
+    justify-content:center; gap:32px; z-index:200;
+  }
+  .nav-links.open { display:flex; }
+  .nav-links a { font-size:14px !important; letter-spacing:.2em !important; }
+  .nav-close { position:absolute; top:24px; right:24px; font-family:"DM Mono",monospace; font-size:9px; letter-spacing:.12em; color:var(--gold); background:none; border:1px solid rgba(200,154,66,.4); padding:5px 10px; cursor:pointer; text-transform:uppercase; }
+}
+
+/* ── VIDEO RESPONSIVE ────────────────────────────── */
+@media (max-width:700px) {
+  video { width:100% !important; max-width:100% !important; }
+}
 </style>
 </head>
 <body>
@@ -386,6 +576,13 @@
   });
   const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');}),{threshold:.08});
   document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+
+  // Close mobile nav on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
 </script>
 </body>
 </html>
