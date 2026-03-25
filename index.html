@@ -1217,4 +1217,30 @@
   function applyRole(r) {
     const cfg = ROLES[r] || ROLES['pm'];
     // pill
-    const pillE
+    const pillEl = document.getElementById('pill-role');
+    if (pillEl) pillEl.textContent = cfg.pill;
+    // nav badge — hidden, not used
+    // where i fit subtitle
+    const subEl = document.getElementById('role-sub');
+    if (subEl) subEl.textContent = cfg.sub;
+  }
+
+  // Read URL param and apply on load
+  const param = new URLSearchParams(window.location.search).get('role') || 'pm';
+  applyRole(param);
+
+  // Make hero pill clickable — cycles through roles
+  const roleOrder = ['pm', 'pmm', 'ops'];
+  let currentRole = roleOrder.indexOf(param) !== -1 ? roleOrder.indexOf(param) : 0;
+
+  const heroPill = document.getElementById('pill-role');
+  if (heroPill) {
+    heroPill.style.cursor = 'pointer';
+    heroPill.title = 'Click to switch role';
+    heroPill.addEventListener('click', () => {
+      currentRole = (currentRole + 1) % roleOrder.length;
+      applyRole(roleOrder[currentRole]);
+    });
+  }
+
+</script></body></html>
