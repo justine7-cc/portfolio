@@ -32,8 +32,8 @@
   body { background:var(--dark); color:var(--dt); font-family:'Crimson Pro',Georgia,serif; font-size:18px; overflow-x:hidden; cursor:none; }
 
   /* Cursor */
-  #cur { position:fixed; width:9px; height:9px; background:var(--gold); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); }
-  #curR { position:fixed; width:34px; height:34px; border:1px solid rgba(200,154,66,.4); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width .3s,height .3s; }
+  #cur { position:fixed; width:10px; height:10px; background:var(--gold); border-radius:50%; pointer-events:none; z-index:99999; transform:translate(-50%,-50%); box-shadow:0 0 6px rgba(200,154,66,.6); }
+  #curR { position:fixed; width:36px; height:36px; border:1.5px solid rgba(200,154,66,.55); border-radius:50%; pointer-events:none; z-index:99998; transform:translate(-50%,-50%); transition:left .08s ease,top .08s ease; }
 
   /* Nav */
   nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:22px 56px; transition:background .35s; }
@@ -47,11 +47,11 @@
      HERO
   ══════════════════════════ */
 
-  /* ── Block 1: Name + Photo (side by side) ── */
+  /* ── Block 1: Name | Tagline | Photo ── */
   .hero-top {
     background: var(--dark);
     display: grid;
-    grid-template-columns: 1fr 290px;
+    grid-template-columns: auto 1fr 300px;
     min-height: calc(100vh - 130px);
     position: relative;
     overflow: hidden;
@@ -66,9 +66,16 @@
   .hero-glow { position:absolute; top:10%; left:-5%; width:60%; height:80%; background:radial-gradient(ellipse at 30% 50%, rgba(200,154,66,.065) 0%, transparent 65%); pointer-events:none; z-index:0; }
 
   .hero-l {
-    padding: 40px 56px 60px 56px;
+    padding: 40px 48px 60px 56px;
     display: flex; flex-direction: column; justify-content: center;
     position: relative; z-index: 2;
+  }
+  /* Middle col: tagline + pills */
+  .hero-mid {
+    padding: 40px 48px 60px 0;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; z-index: 2;
+    border-left: 1px solid rgba(200,154,66,.1);
   }
   .hero-r {
     position: relative; z-index: 2;
@@ -551,13 +558,13 @@
   .exp-sub { font-family:'DM Mono',monospace; font-size:10px; color:var(--mw); line-height:1.65; letter-spacing:.03em; }
 
   /* Roles banner */
-  .roles-banner { background:var(--dark); color:var(--dt); padding:48px 56px; display:flex; align-items:center; gap:64px; position:relative; overflow:hidden; border-top:1px solid var(--bd); border-bottom:1px solid var(--bd); }
+  .roles-banner { background:var(--dark); color:var(--dt); padding:56px 56px; display:flex; align-items:center; justify-content:center; gap:64px; position:relative; overflow:hidden; border-top:1px solid var(--bd); border-bottom:1px solid var(--bd); }
   .roles-banner::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(-55deg, transparent, transparent 40px, rgba(200,154,66,.018) 40px, rgba(200,154,66,.018) 41px); pointer-events:none; }
-  .rb-l { flex:1; position:relative; z-index:1; }
+  .rb-l { flex:unset; max-width:680px; text-align:center; position:relative; z-index:1; }
   .rb-r { display:grid; grid-template-columns:1fr 1fr; gap:9px; flex-shrink:0; width:420px; position:relative; z-index:1; }
   .rb-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(32px,3.8vw,50px); letter-spacing:.03em; line-height:1.05; margin-bottom:12px; }
   .rb-title span { color:var(--gold); }
-  .rb-sub { font-size:clamp(18px,2vw,26px); color:rgba(232,227,216,.75); font-weight:300; font-style:italic; letter-spacing:.02em; margin-top:8px; }
+  .rb-sub { font-size:clamp(20px,2.2vw,30px); color:rgba(232,227,216,.75); font-weight:300; font-style:italic; letter-spacing:.02em; margin-top:12px; }
   .rcard { padding:16px; border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.025); }
   .rcard-t { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:5px; }
   .rcard-d { font-size:13px; color:rgba(232,227,216,.35); line-height:1.5; font-weight:300; }
@@ -640,6 +647,12 @@
       JUSTINE<br>
       <span class="g">CHANG</span><span class="gh">.</span>
     </h1>
+    <div class="hero-cta">
+      <a href="https://www.linkedin.com/in/justine-chang-chia-chi/" target="_blank" class="btn btn-p">Let's Talk ↗</a>
+    </div>
+  </div>
+
+  <div class="hero-mid">
     <p class="hero-tl">
       I build <strong>brands</strong>.<br>
       I design <strong>products</strong>.<br>
@@ -648,9 +661,6 @@
     <div class="hero-pills" id="hero-pills">
       <span class="pill on" id="pill-role">Product Management</span>
       <span class="pill">Stanford GSB MBA1</span>
-    </div>
-    <div class="hero-cta">
-      <a href="https://www.linkedin.com/in/justine-chang-chia-chi/" target="_blank" class="btn btn-p">Let's Talk ↗</a>
     </div>
   </div>
 
@@ -732,12 +742,12 @@
           <span class="tag">GTM</span>
         </div>
         <div class="cs-title">SPUN LABS</div>
-        <p class="cs-desc">Generative AI democratizing studio-quality sound for 100M+ independent creators. Led product strategy, $27.4B market sizing, and user research (n=16) that shaped the indie creator GTM wedge.</p>
+        <p class="cs-desc">Generative AI democratizing studio-quality sound for 100M+ independent creators. Led product strategy, $27.4B market sizing, and user research (n=45) that shaped the indie creator GTM wedge.</p>
         <div class="cs-stats">
           <div class="cst"><div class="cst-n">$27.4B</div><div class="cst-l">TAM</div></div>
           <div class="cst"><div class="cst-n">100M+</div><div class="cst-l">Creators</div></div>
-          <div class="cst"><div class="cst-n">$1M</div><div class="cst-l">Pre-seed</div></div>
-          <div class="cst"><div class="cst-n">4</div><div class="cst-l">a16z mtgs</div></div>
+          <div class="cst"><div class="cst-n">MVP</div><div class="cst-l">Developed</div></div>
+          <div class="cst"><div class="cst-n">4</div><div class="cst-l">a16z Meetings</div></div>
         </div>
       </div>
     </a>
@@ -924,9 +934,6 @@
     <div class="rb-title" id="role-title">WHERE<br>I FIT <span>BEST</span></div>
     <p class="rb-sub" id="role-sub">Brand × product × data fluency.</p>
   </div>
-  <div class="rb-r" id="role-cards">
-    <!-- populated by JS -->
-  </div>
 </div>
 
 <!-- Tools -->
@@ -950,7 +957,7 @@
     <div class="c-title">READY TO<br>BUILD <span>SOMETHING?</span></div>
 
     <div class="c-links">
-      <a href="mailto:justine7@stanford.edu" class="btn btn-g btn-email">justine7@stanford.edu</a>
+      <a href="/cdn-cgi/l/email-protection#42283731362b2c2775023136232c242d30266c272637" class="btn btn-g btn-email"><span class="__cf_email__" data-cfemail="3c56494f485552590b7c4f485d525a534e5812595849">[email&#160;protected]</span></a>
       <a href="https://www.linkedin.com/in/justine-chang-chia-chi/" class="btn btn-g" target="_blank">LinkedIn ↗</a>
     </div>
   </div>
@@ -961,21 +968,78 @@
   <div class="fr">BRAND × PRODUCT × MUSIC</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Cursor
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Cursor — works on all elements
   const cur=document.getElementById('cur'),curR=document.getElementById('curR');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
-  (function a(){ rx+=(mx-rx)*.1; ry+=(my-ry)*.1; curR.style.left=rx+'px'; curR.style.top=ry+'px'; requestAnimationFrame(a); })();
+  let mx=window.innerWidth/2, my=window.innerHeight/2;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    cur.style.left=mx+'px'; cur.style.top=my+'px';
+    curR.style.left=mx+'px'; curR.style.top=my+'px';
+  });
+  // Cursor grow on hover
+  document.querySelectorAll('a,button,[class*="card"],[class*="btn"]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ curR.style.width='52px'; curR.style.height='52px'; curR.style.borderColor='rgba(200,154,66,.8)'; });
+    el.addEventListener('mouseleave',()=>{ curR.style.width='36px'; curR.style.height='36px'; curR.style.borderColor='rgba(200,154,66,.55)'; });
+  });
 
   // Nav
   window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
 
   // Reveal
-  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.08});
-  document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // NFC image switcher
-  function switchNfc(thumb, src) {
-    document.getElementById('nfc-img').style.opacity='0';
-    setTimeout(()=>{
+  // ── Role-switching ──────────────────────────────────────────────
+  const ROLES = {
+    pmm: {
+      pill: 'Product × Marketing',
+      sub: 'Where brand strategy meets product growth.',
+      cards: [
+        { role:'Product Marketing Manager', co:'Tech / AI Startup', desc:'Own GTM for AI-native products. Drive positioning, launches, and creator community growth.' },
+        { role:'Brand Strategist', co:'Consumer Tech', desc:'Define brand voice and positioning for products entering new markets.' },
+        { role:'PMM Lead', co:'Series A–B', desc:'Bridge between product and go-to-market. Research → narrative → revenue.' },
+        { role:'Growth & Content Lead', co:'Music / Creator Tech', desc:'Build audience, drive retention, own the story across channels.' }
+      ]
+    },
+    pm: {
+      pill: 'Product Management',
+      sub: 'Brand × product × data fluency.',
+      cards: [
+        { role:'Product Manager', co:'AI / Consumer', desc:'Define roadmap, lead discovery, ship features with cross-functional teams.' },
+        { role:'Associate PM', co:'Early-Stage Startup', desc:'0→1 product work. User research, prioritisation, and iterating fast.' },
+        { role:'PM — Growth', co:'B2C SaaS', desc:'Own activation and retention metrics. Experiment-driven product decisions.' },
+        { role:'Product Lead', co:'Music Tech', desc:'Deeply understand creator workflows. Build tools that reduce friction.' }
+      ]
+    },
+    ops: {
+      pill: 'Strategy & Ops',
+      sub: 'Systems thinking meets execution.',
+      cards: [
+        { role:'Strategy & Ops Manager', co:'Tech / Startup', desc:'Build operating cadence, own OKRs, drive cross-functional alignment.' },
+        { role:'BizOps', co:'Series A–C', desc:'Translate strategy into action. Own the metrics that matter.' },
+        { role:'Chief of Staff', co:'Founder-led company', desc:'Leverage multiplier for founders. Research → decisions → execution.' },
+        { role:'Market Expansion Lead', co:'Asia-Pacific', desc:'Apply P&G and startup experience to new market entry and growth.' }
+      ]
+    }
+  };
+
+  function applyRole(r) {
+    const cfg = ROLES[r] || ROLES['pm'];
+    // pill
+    const pillEl = document.getElementById('pill-role');
+    if (pillEl) pillEl.textContent = cfg.pill;
+    // nav badge
+    const badge = document.getElementById('nav-role-label');
+    if (badge) { badge.textContent = cfg.pill; badge.style.display = 'inline-block'; }
+    // where i fit subtitle
+    const subEl = document.getElementById('role-sub');
+    if (subEl) subEl.textContent = cfg.sub;
+    // cards
+    // no cards in this version
+  }
+
+  const param = new URLSearchParams(window.location.search).get('role') || 'pm';
+  applyRole(param);
+
+</script></body></html>
