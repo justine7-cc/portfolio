@@ -1225,8 +1225,19 @@
     if (subEl) subEl.textContent = cfg.sub;
   }
 
-  // Read URL param and apply on load
-  const param = new URLSearchParams(window.location.search).get('role') || 'pm';
+  // Read URL param — try current window first, then parent (handles iframe previews)
+  function getRoleParam() {
+    try {
+      const p = new URLSearchParams(window.location.search).get('role');
+      if (p) return p;
+    } catch(e) {}
+    try {
+      const p = new URLSearchParams(window.parent.location.search).get('role');
+      if (p) return p;
+    } catch(e) {}
+    return 'pm';
+  }
+  const param = getRoleParam();
   applyRole(param);
 
   // Make hero pill clickable — cycles through roles
